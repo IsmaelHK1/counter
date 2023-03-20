@@ -19,7 +19,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div style={{verticalAlign : 'middle', display : 'inline-block'}}>
+      <div style={{display : 'flex'}}>
 
       <Counter1 count = {count } setCount = { setCount} />
       <Counter2 count2 = {count2} setCount2 = {setCount2} />
@@ -40,9 +40,6 @@ function Counter1(props){
         <button onClick={() => props.setCount(props.count + 1)}>
           Counter ++
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
   )
 }
@@ -56,9 +53,6 @@ function Counter2(props) {
     <button onClick={() => props.setCount2(props.count2 + 1)}>
       Counter ++
     </button>
-    <p>
-      Edit <code>src/App.jsx</code> and save to test HMR
-    </p>
   </div>
   )
 }
