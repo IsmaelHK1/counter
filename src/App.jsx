@@ -24,6 +24,12 @@ function App() {
       <Counter1 count = {count } setCount = { setCount} />
       <Counter2 count2 = {count2} setCount2 = {setCount2} />
       </div>
+      <button onClick={() => {
+        setCount(count + 1)
+        setCount2(count2 + 1)
+        }}>
+          Counter ++
+        </button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
