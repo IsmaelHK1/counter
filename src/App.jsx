@@ -2,7 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useMemo } from 'react'
 
+// interface CounterProps {
+//   globalCount : number
+// }
 function App() {
   const [toAdd, setToAdd] = useState(0)
 
@@ -31,14 +35,17 @@ function App() {
   )
 }
 function Counter1(props){
-
   const [count, setCount] = useState(0)
+
+  useMemo( () => {
+    setCount(count + props.toAdd)
+  }, [props.toAdd])
 
   return (
     <div className="card">
         <h3>COUNT 1 </h3>
         <p>
-        {count + props.toAdd}
+        {count}
         </p>
         <button onClick={() => setCount(count + 1)}>
           Counter ++
