@@ -5,7 +5,6 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  // const [count2, setCount2] = useState(0)
 
 
   return (
@@ -21,7 +20,8 @@ function App() {
       <h1>Vite + React</h1>
       <div style={{ display: 'flex'}}> 
       <Counter1 count = {count} />
-      <Counter2 count = {count} />
+      <Counter1 count = {count} />
+      
       </div>
       <button onClick={() =>setCount(count + 1)}>
           Counter ++
@@ -45,19 +45,6 @@ function Counter1(props){
       </div>
   )
 }
-function Counter2(props) {
-  return ( 
-    <div className="card">
-    <h3>COUNT 2 </h3>
-    <p>
-      <p>
-    {props.count}
-      </p>
-    </p>
-  </div>
-  )
-}
-
 
 
 export default App
