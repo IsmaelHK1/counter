@@ -7,11 +7,24 @@ import { useMemo } from 'react'
 // interface CounterProps {
 //   globalCount : number
 // }
+
+function InfiniteLoop() {
+  let num = 0
+  while (true) {
+    num ++
+    return <div>
+      {num}
+    </div>
+  }
+}
+
 function App() {
   const [toAdd, setToAdd] = useState(0)
 
   return (
+
     <div className="App">
+      <InfiniteLoop />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
