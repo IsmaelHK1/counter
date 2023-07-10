@@ -2,14 +2,29 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useMemo } from 'react'
+
+// interface CounterProps {
+//   globalCount : number
+// }
+
+function InfiniteLoop() {
+  let num = 0
+  while (true) {
+    num ++
+    return <div>
+      {num}
+    </div>
+  }
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [count2, setCount2] = useState(0)
-
+  const [toAdd, setToAdd] = useState(0)
 
   return (
+
     <div className="App">
+      <InfiniteLoop />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -19,8 +34,13 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Counter1 count = {count } setCount = { setCount} />
-      <Counter2 count2 = {count2} setCount2 = {setCount2} />
+      <div style={{display : 'flex'}}>
+      <Counter1 toAdd = {toAdd} />
+      <Counter1 toAdd = {toAdd}  />
+      </div>
+      <button onClick={() => setToAdd(toAdd + 1)}>
+          Counter ++
+        </button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
@@ -28,38 +48,23 @@ function App() {
   )
 }
 function Counter1(props){
+  const [count, setCount] = useState(0)
+
+  useMemo( () => {
+    setCount(count + props.toAdd)
+  }, [props.toAdd])
+
   return (
     <div className="card">
         <h3>COUNT 1 </h3>
         <p>
-        {props.count}
+        {count}
         </p>
-        <button onClick={() => props.setCount(props.count + 1)}>
+        <button onClick={() => setCount(count + 1)}>
           Counter ++
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
   )
 }
-function Counter2(props) {
-  return ( 
-    <div className="card">
-    <h3>COUNT 2 </h3>
-    <p>
-    {props.count2}
-    </p>
-    <button onClick={() => props.setCount2(props.count2 + 1)}>
-      Counter ++
-    </button>
-    <p>
-      Edit <code>src/App.jsx</code> and save to test HMR
-    </p>
-  </div>
-  )
-}
-
-
 
 export default App
